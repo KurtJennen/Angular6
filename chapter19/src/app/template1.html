@@ -1,0 +1,81 @@
+<div class="bg-info text-white m-2 p-2">
+    There are {{model.getProducts().length}} products in the model
+</div>
+<div [ngClass]="getClasses()">
+    Hello, World.
+</div>
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()">
+    Hello, World.
+</div>
+<div ngClass="'text-white m-2 p-2 ' + getClasses()">
+    Hello, World.
+</div>
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()" [textContent]="'Name: ' + (model.getProduct(1)?.name || 'None')">
+</div>
+<div [ngClass]="'text-white m-2 p-2 ' + getClasses()">
+    Name: {{ model.getProduct(1)?.name || 'None' }}
+</div>
+<div class="form-group m-2">
+    <label>Name:</label>
+    <input class="form-control" [value]="model.getProduct(1)?.name || 'None'" />
+</div>
+<table class="table table-sm table-bordered table-striped mt-2">
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+    </tr>
+    <tr>
+        <td [attr.colspan]="model.getProducts().length">
+            {{ model.getProduct(1)?.name || 'None' }}
+        </td>
+    </tr>
+</table>
+<div class="text-white m-2">
+    <div [class]="getClasses1(1)">
+        The first product is {{ model.getProduct(1).name }}
+    </div>
+    <!-- <div [class]="getClasses1(2)">
+        The second product is {{ model.getProduct(2).name }}
+    </div> -->
+    <div class="p-2" [class.bg-success]="model.getProduct(2).price < 50"  [class.bg-info]="model.getProduct(2).price >= 50">
+        The second product is {{ model.getProduct(2).name }}
+    </div>
+</div>
+<div class="text-white m-2">
+    <div class="p-2" [ngClass]="getClassMap(1)">
+        The first product is {{ model.getProduct(1).name }}
+    </div>
+    <div class="p-2" [ngClass]="getClassMap(2)">
+        The second product is {{ model.getProduct(2).name }}
+    </div>
+    <div class="p-2" [ngClass]="{'bg-success': model.getProduct(3).price < 50, 'bg-info': model.getProduct(3).price >= 50}">
+        The third product is {{ model.getProduct(3).name }}
+    </div>
+</div>
+<div class="text-white m-2">
+    <div class="p-2 bg-warning">
+        The <span [style.fontSize]="fontSizeWithUnits" >first</span> product is {{ model.getProduct(1).name }}
+    </div>
+    <div class="p-2 bg-info">
+        The <span [style.fontSize.px]="fontSizeWithoutUnits">second</span> product is {{ model.getProduct(2).name }}
+    </div>
+</div>
+<div class="text-white m-2">
+    <div class="p-2 bg-warning">
+        The <span [ngStyle]="getStyles(1)" >first</span> product is {{ model.getProduct(1).name }}
+    </div>
+    <div class="p-2 bg-info">
+        The <span [ngStyle]="getStyles(2)">second</span> product is {{ model.getProduct(2).name }}
+    </div>
+</div>
+<div class="text-white m-2">
+    <div [ngClass]="getClassesByPosition(0)">
+        The first product is {{ getProductByPosition(0).name }}
+    </div>
+    <div [ngClass]="getClassesByPosition(1)">
+        The second product is {{ getProductByPosition(1).name }}
+    </div>
+</div>
